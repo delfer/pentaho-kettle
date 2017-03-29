@@ -180,15 +180,18 @@ Since the repository is heavy, it is recommened to clone only the latest commit 
 ```bash
 $ git clone -b webspoon --depth 1 https://github.com/HiromuHota/pentaho-kettle.git
 ```
-Change the directory
+
+Firstly, build a patched jar for kettle-core and publish it locally.
+
+```bash
+$ cd pentaho-kettle/core/
+$ ant publish-local
+```
+
+Change the directory and resolve dependencies
 
 ```bash
 $ cd pentaho-kettle/ui/
-```
-
-Resolve dependencies
-
-```bash
 $ ant resolve
 ```
 
@@ -198,7 +201,7 @@ Replace some of the dependent libraries with patched ones, which can be download
 $ cp ${path_to_lib}/org.eclipse.rap.filedialog_3.1.1.YYYYMMDD-XXXX.jar lib/org.eclipse.rap.filedialog-3.1.1.jar
 $ cp ${path_to_lib}/org.eclipse.rap.jface_3.1.1.YYYYMMDD-XXXX.jar lib/org.eclipse.rap.jface-3.1.1.jar
 $ cp ${path_to_lib}/org.eclipse.rap.rwt_3.1.1.YYYYMMDD-XXXX.jar lib/org.eclipse.rap.rwt-3.1.1.jar
-$ cp ${path_to_lib}/pentaho-xul-swt-6.1-SNAPSHOT.jar lib/pentaho-xul-swt-6.1.0.1-196.jar
+$ cp ${path_to_lib}/pentaho-xul-swt-7.0.0.0-25.jar lib/pentaho-xul-swt-7.0.0.0-25.jar
 ```
 
 Build and you will get a WAR file in `dist` folder, which can be deployed to the Java Application server of your choice.
