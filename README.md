@@ -54,6 +54,7 @@ Please refer to the [wiki](https://github.com/HiromuHota/pentaho-kettle/wiki/Sys
 
 1. Download the latest `spoon.war` from [here](https://github.com/HiromuHota/pentaho-kettle/releases).
 2. Copy the downloaded `spoon.war` to `tomcat/webapps/spoon.war`.
+3. Configure users as described below.
 3. (Optional) download and unzip `pdi-ce-7.0.0.0-25.zip`, then copy the `system` and `plugins` folders to `tomcat/system` and `tomcat/plugins`, respectively.
 4. (Optional) configure Apache Karaf as below.
 5. (Re)start the Tomcat.
@@ -63,12 +64,24 @@ Please refer to the [wiki](https://github.com/HiromuHota/pentaho-kettle/wiki/Sys
 
 1. Download the latest `spoon.war` from [here](https://github.com/HiromuHota/pentaho-kettle/releases).
 2. Copy the downloaded `spoon.war` to `pentaho-server/tomcat/webapps/spoon.war`.
+3. Configure users as described below.
 3. (Re)start the Pentaho server.
 4. Access `http://address:8080/spoon/spoon`
 
 It is not recommended to place `system` and `plugins` folders along with the Pentaho server due to [#32](https://github.com/HiromuHota/pentaho-kettle/issues/32) and [#35](https://github.com/HiromuHota/pentaho-kettle/issues/35).
 
 ## Config
+
+### Users
+
+Edit `tomcat/conf/tomcat-users.xml` to add users for <i>user</i> role.
+
+```
+<tomcat-users>
+  <role rolename="user"/>
+  <user username="user" password="password" roles="user"/>
+</tomcat-users>
+```
 
 ### Repository
 

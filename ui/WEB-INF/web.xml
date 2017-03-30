@@ -4,6 +4,20 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
   version="2.4">
 
+  <!-- Enable BASIC Auth -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Protected webSpoon</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+  </login-config>
+
   <context-param>
     <param-name>org.eclipse.rap.applicationConfiguration</param-name>
     <param-value>org.pentaho.di.ui.spoon.WebSpoon</param-value>
